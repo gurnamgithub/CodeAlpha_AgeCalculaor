@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculater</title>
+  <style>
+    .container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+h1{
+  background-color:yellow ;
+}
+label{
+  background-color:greenyellow ;
+}
+
+  </style>
+</head>
+<body style="background-color: pink;">
+  <h1 >Age Calculater :--</h1>
+  <div class="container">
+    <label for="dob">Date of Birth:--</label>
+    <input type="date" id="dob">
+    <button onclick="calculateAge()">Calculate</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    function calculateAge() {
+  var dob = new Date(document.getElementById('dob').value);
+  var today = new Date();
+  
+  var age = today.getFullYear() - dob.getFullYear();
+  var monthDiff = today.getMonth() - dob.getMonth();
+  var dayDiff = today.getDate() - dob.getDate();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+    monthDiff = 12 + monthDiff;
+  }
+  
+  var years = age + " years";
+  var months = monthDiff + " months";
+  var days = dayDiff + " days";
+  
+  document.getElementById('result').innerHTML = "Your age is: " + years + ", " + months + ", and " + days + " old.";
+}
+  </script>
+</body>
+</html>
